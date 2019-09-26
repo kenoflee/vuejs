@@ -19,4 +19,8 @@
         padding: 30px;
         margin: auto;
     }
+
+    h1 {
+        color: red;
+    }
 </style>
