@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div>
-            <p>{{quote}}</p>
+            <slot></slot>
         </div>
     </div>
 </template>
