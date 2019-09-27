@@ -16,11 +16,12 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
+                        <!-- v-model.lazy makes sure the event is only fired when we leave the input -->
                         <input
                                 type="password"
                                 id="password"
                                 class="form-control"
-                                v-model="userData.password"
+                                v-model.lazy="userData.password"
                                 >
                     </div>
                     <div class="form-group">
