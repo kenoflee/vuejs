@@ -10,14 +10,16 @@
                 <hr>
                 <p>{{ selectedComponent }}</p>
 
-                <app-quote >
+                <component :is="selectedComponent"></component>
+
+                <!-- <app-quote >
                     <h1 slot="title">{{quoteTitle}}</h1>
 
 
                     <div slot="content">This is the quote</div>
 
                     <p> This paragraph is for the default slot</p>
-                </app-quote>
+                </app-quote> -->
             </div>
         </div>
     </div>
