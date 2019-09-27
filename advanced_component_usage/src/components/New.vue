@@ -16,7 +16,14 @@
         destroyed() {
             //The component is destroyed and recreated dynamically
             console.log('Destroyed!');
+        },
+        deactivated() {
+            console.log('Deactivated!');
+        },
+        activated() {
+            console.log('Activated!');
         }
+        
     }
 </script>
 
