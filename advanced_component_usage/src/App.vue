@@ -10,7 +10,9 @@
                 <hr>
                 <p>{{ selectedComponent }}</p>
 
-                <component :is="selectedComponent"></component>
+                <component :is="selectedComponent">
+                    <p>Default content</p>
+                </component>
 
                 <!-- <app-quote >
                     <h1 slot="title">{{quoteTitle}}</h1>
