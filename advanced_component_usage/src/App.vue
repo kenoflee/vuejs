@@ -2,10 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-               <app-quote >
-                   <h1 slot="title">{{quoteTitle}}</h1>
-                   <div slot="content">This is the quote</div>
-               </app-quote>
+                <app-quote >
+                    <h1 slot="title">{{quoteTitle}}</h1>
+                    <div slot="content">This is the quote</div>
+
+                    <p> This paragraph is for the default slot</p>
+                </app-quote>
             </div>
         </div>
     </div>
