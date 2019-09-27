@@ -10,9 +10,12 @@
                 <hr>
                 <p>{{ selectedComponent }}</p>
 
-                <component :is="selectedComponent">
-                    <p>Default content</p>
-                </component>
+                <!-- use keep-alive to preserve the state of the component -->
+                <keep-alive>
+                    <component :is="selectedComponent">
+                        <p>Default content</p>
+                    </component>
+                </keep-alive>
 
                 <!-- <app-quote >
                     <h1 slot="title">{{quoteTitle}}</h1>
