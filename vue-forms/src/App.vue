@@ -7,6 +7,7 @@
                     <hr>
                     <div class="form-group">
                         <label for="email">Mail</label>
+                        <!--v-model is a shorter form of :value="userData.email", @input="userData.email = $event.target.value" -->
                         <input
                                 type="text"
                                 id="email"
@@ -103,6 +104,11 @@
                     </select>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <app-switch></app-switch>
+                </div>
+            </div>
             <hr>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
@@ -140,6 +146,8 @@
 </template>
 
 <script>
+    import Switch from './Switch.vue';
+
     export default {
         data() {
             return {
@@ -154,6 +162,9 @@
                 selectedPriority: 'High',
                 priorities: ['High', 'Medium', 'Low'],
             }
+        },
+        components: {
+            appSwitch: Switch,
         },
     }
 </script>
