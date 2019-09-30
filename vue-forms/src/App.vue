@@ -96,7 +96,7 @@
                     <select
                             id="priority"
                             class="form-control">
-                        <option></option>
+                        <option :key="index" v-for="(priority, index) in priorities" :selected="priority == 'Medium'">{{priority}}</option>
                     </select>
                 </div>
             </div>
@@ -148,6 +148,7 @@
                 message: 'A new text',
                 sendMail: [],
                 gender: 'Male',
+                priorities: ['High', 'Medium', 'Low']
             }
         },
     }
