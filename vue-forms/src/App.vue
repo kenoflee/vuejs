@@ -95,8 +95,11 @@
                     <label for="priority">Priority</label>
                     <select
                             id="priority"
-                            class="form-control">
-                        <option :key="index" v-for="(priority, index) in priorities" :selected="priority == 'Medium'">{{priority}}</option>
+                            class="form-control"
+                            v-model="selectedPriority"
+                        >
+                        <!-- with v-model :selected="priority == 'Medium'" is not necessary -->
+                        <option :key="index" v-for="(priority, index) in priorities" >{{priority}}</option>
                     </select>
                 </div>
             </div>
@@ -127,7 +130,7 @@
                             <li :key="index" v-for="(item, index) in sendMail">{{item}}</li>
                         </ul>
                         <p>Gender:</p>
-                        <p>Priority:</p>
+                        <p>Priority: {{selectedPriority}}</p>
                         <p>Switched:</p>
                     </div>
                 </div>
@@ -148,7 +151,8 @@
                 message: 'A new text',
                 sendMail: [],
                 gender: 'Male',
-                priorities: ['High', 'Medium', 'Low']
+                selectedPriority: 'High',
+                priorities: ['High', 'Medium', 'Low'],
             }
         },
     }
