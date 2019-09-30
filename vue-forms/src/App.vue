@@ -73,17 +73,20 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 form-group">
+                    <!-- Having same v-model value groups the radio button together and stores the value to "this.gender" -->
                     <label for="male">
                         <input
                                 type="radio"
                                 id="male"
-                                value="Male"> Male
+                                value="Male"
+                                v-model="gender"> Male
                     </label>
                     <label for="female">
                         <input
                                 type="radio"
                                 id="female"
-                                value="Female"> Female
+                                value="Female"
+                                v-model="gender"> Female
                     </label>
                 </div>
             </div>
@@ -121,7 +124,7 @@
                         <p style="white-space: pre">Message: {{message}}</p>
                         <p><strong>Send Mail?</strong></p>
                         <ul>
-                            <li v-for="item in sendMail">{{item}}</li>
+                            <li :key="index" v-for="(item, index) in sendMail">{{item}}</li>
                         </ul>
                         <p>Gender:</p>
                         <p>Priority:</p>
@@ -144,6 +147,7 @@
                 },
                 message: 'A new text',
                 sendMail: [],
+                gender: 'Male',
             }
         },
     }
