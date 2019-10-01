@@ -15,6 +15,9 @@
                 <p v-highlight:background.delayed="'red'">Color this</p>
                 <!-- has no argument -->
                 <p v-highlight="'red'">Color this</p>
+
+                <!-- local directive -->
+                <p v-local-highlight:background.delayed="'red'">Color this</p>
             </div>
         </div>
     </div>
@@ -22,6 +25,24 @@
 
 <script>
     export default {
+        directives: {
+            'local-highlight': {
+                bind(el, binding, vnode) {
+                    let delay = 0;
+                    if(binding.modifiers['delayed']) {
+                    delay = 3000;
+                    };
+
+                    setTimeout(()=> {
+                    if(binding.arg == 'background') {
+                        el.style.backgroundColor = binding.value;
+                    } else {
+                        el.style.color = binding.value;
+                    }
+                    }, delay)
+                }
+            }
+        }
     }
 </script>
 
