@@ -17,7 +17,7 @@
                 <p v-highlight="'red'">Color this</p>
 
                 <!-- local directive -->
-                <p v-local-highlight:background.delayed.blink="'red'">Color this</p>
+                <p v-local-highlight:background.delayed.blink="{mainColor: 'red', secondColor: 'blue', delay: 3000}">Color this</p>
             </div>
         </div>
     </div>
@@ -30,11 +30,11 @@
                 bind(el, binding, vnode) {
                     let delay = 0;
                     if(binding.modifiers['delayed']) {
-                        delay = 3000;
+                        delay = binding.value.delay;
                     };
                     if(binding.modifiers['blink']) {
-                        let mainColor = binding.value;
-                        let secondColor = 'blue';
+                        let mainColor = binding.value.mainColor;
+                        let secondColor = binding.value.secondColor;
                         let currentColor = mainColor;
 
                         setTimeout(() => {
