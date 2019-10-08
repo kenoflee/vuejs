@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+Vue.filter('to-lowercase', (string) => {
+  return string.toLowerCase();
+})
+
 new Vue({
   el: '#app',
   render: h => h(App)
