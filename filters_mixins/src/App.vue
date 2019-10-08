@@ -17,13 +17,15 @@
 
 <script>
     import List from './List.vue';
+    import { fruitMixin } from './fruitMixin';
 
     export default {
+        mixins: [fruitMixin],
         data() {
             return {
+                //Vuejs merges in local data properties with mixins
                 text: 'Hello there!',
-                fruits: ['Apple', 'Banana', 'Mango', 'Melon'],
-                filterText: '',
+                //remove the fruits and filterText property and replace it with MIXIN
             }
         },
         filters: {
@@ -36,11 +38,10 @@
             often, the computed property are better solutions than filters because 
             computed property can detect the changes in the filter and knows when to recalculate
             */
-            filteredFruits() {
-                return this.fruits.filter((element) => {
-                    return element.match(this.filterText);
-                });
-            },
+            
+            /**
+             * remove filteredFruits because mixin is used
+             */
         },
         components: {
             appList: List,
