@@ -14,6 +14,10 @@
 
     export default {
         mixins: [fruitMixin],
+        //(component lifecycle hook will always have the last word over mixins)
+        created() {
+            console.log('Inside List Created Hook');
+        },
     }
 </script>
 
