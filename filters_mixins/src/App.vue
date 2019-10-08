@@ -4,6 +4,10 @@
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <h1>Filters & Mixins</h1>
                 <p>{{text | toUppercase | to-lowercase}}</p>
+                <input type="text" v-model="filterText">
+                <ul>
+                    <li :key="fruit" v-for="fruit in filteredFruits">{{fruit}}</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -14,13 +18,26 @@
         data() {
             return {
                 text: 'Hello there!',
+                fruits: ['Apple', 'Banana', 'Mango', 'Melon'],
+                filterText: '',
             }
         },
         filters: {
             toUppercase(string) {
                 return string.toUpperCase();
             },
-        }
+        },
+        computed: {
+            /*
+            often, the computed property are better solutions than filters because 
+            computed property can detect the changes in the filter and knows when to recalculate
+            */
+            filteredFruits() {
+                return this.fruits.filter((element) => {
+                    return element.match(this.filterText);
+                });
+            },
+        },
     }
 </script>
 
