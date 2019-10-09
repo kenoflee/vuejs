@@ -33,6 +33,18 @@
                     >
                     <div class="alert alert-info" v-if="show">This is some Info</div>
                 </transition>
+
+                <!-- 
+                    mode="out-in" allows the old value fades out before the new value fades in
+                    other values: "in-out"
+                -->
+                <transition :name="alertAnimation" mode="out-in">
+                    <!-- 
+                        key attribute is used for vuejs to differentiate the elements. key value must be unique
+                    -->
+                    <div class="alert alert-info" v-if="show" key="info">This is some Info</div>
+                    <div class="alert alert-warning" v-else key="warning">This is some Warning</div>
+                </transition>
             </div>
         </div>
     </div>
