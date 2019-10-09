@@ -45,6 +45,23 @@
                     <div class="alert alert-info" v-if="show" key="info">This is some Info</div>
                     <div class="alert alert-warning" v-else key="warning">This is some Warning</div>
                 </transition>
+                <hr>
+                <button class="btn btn-primary" @click="load = !load">Load / Remove Element</button>
+                <br><br>
+
+                <transition
+                    @before-enter="beforeEnter"
+                    @enter="enter"
+                    @after-enter="afterEnter"
+                    @enter-cancelled="enterCancelled"
+                    
+                    @before-leave="beforeLeave"
+                    @leave="leave"
+                    @after-leave="afterLeave"
+                    @leave-cancelled="leaveCancelled"
+                    >
+                    <div style="width: 100px; height: 100px; background-color:lightgreen;" v-if="load"></div>
+                </transition>
             </div>
         </div>
     </div>
@@ -54,9 +71,41 @@
     export default {
         data() {
             return {
-                show: true,
+                show: false,
+                load: true,
                 alertAnimation: 'fade',
             }
+        },
+        methods: {
+            beforeEnter(el) {
+                console.log('beforeEnter');
+            },
+            enter(el, done) {
+                console.log('enter');
+                //done(); is used to tell vuejs that the animation is finished
+                done();
+            },
+            afterEnter() {
+                //done() is required in enter for afterEnter to be triggered
+                console.log('afterEnter ');
+            },
+            enterCancelled(el) {
+                console.log('enterCancelled');
+            },
+            beforeLeave(el) {
+                console.log('beforeleave');
+            },
+            leave(el, done) {
+                console.log('leave');
+                done();
+            },
+            afterLeave(el) {
+                //done() is required in leave for afterLeave to be triggered
+                console.log('afterleave');
+            },
+            leaveCancelled(el) {
+                console.log('leaveCancelled');
+            },
         }
     }
 </script>
