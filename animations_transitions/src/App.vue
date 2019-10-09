@@ -61,7 +61,7 @@
                     @leave-cancelled="leaveCancelled"
                     :css="false"
                     >
-                    <div style="width: 100px; height: 100px; background-color:lightgreen;" v-if="load"></div>
+                    <div style="width: 300px; height: 100px; background-color:lightgreen;" v-if="load"></div>
                 </transition>
             </div>
         </div>
@@ -75,16 +75,28 @@
                 show: false,
                 load: true,
                 alertAnimation: 'fade',
+                elementWidth: 100,
             }
         },
         methods: {
             beforeEnter(el) {
                 console.log('beforeEnter');
+                this.elementWidth = 100;
+                el.style.width = this.elementWidth + 'px';
             },
             enter(el, done) {
                 console.log('enter');
-                //done(); is used to tell vuejs that the animation is finished
-                done();
+                let round = 1;
+                const interval = setInterval(() => {
+                    el.style.width = (this.elementWidth + round * 10) + 'px';
+                    round++;
+
+                    if(round > 20) {
+                        clearInterval(interval);
+
+                        done();
+                    }
+                }, 20);
             },
             afterEnter() {
                 //done() is required in enter for afterEnter to be triggered
@@ -95,10 +107,22 @@
             },
             beforeLeave(el) {
                 console.log('beforeleave');
+                this.elementWidth = 300;
+                el.style.width = (this.elementWidth + 'px');
             },
             leave(el, done) {
                 console.log('leave');
-                done();
+                let round = 1;
+                const interval = setInterval(() => {
+                    el.style.width = (this.elementWidth - round * 10) + 'px';
+                    round++;
+
+                    if(round > 20) {
+                        clearInterval(interval);
+
+                        done();
+                    }
+                }, 20);
             },
             afterLeave(el) {
                 //done() is required in leave for afterLeave to be triggered
